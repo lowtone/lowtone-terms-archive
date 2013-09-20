@@ -228,4 +228,16 @@ namespace lowtone\terms\archive {
 		return site_url(sprintf("/%s/", $taxonomy->rewrite["slug"]));
 	}
 
+	function isTermsArchive() {
+		global $wp_query;
+
+		if (!$wp_query->get("lowtone_terms_archive_taxonomy"))
+			return false;
+
+		if (!isset($wp_query->taxonomy))
+			return false;
+
+		return true;
+	}
+
 }
